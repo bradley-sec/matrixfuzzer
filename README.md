@@ -12,7 +12,7 @@ Current AI safety research often separates success rates by attack strategy. Thi
 
 ### Technical Breakdown
 
-I utilized simple localized models for these scripts. For attack generation, the primary model utilized was Phi 3 (phi3:3.8b). This model was provided an attack tone, strategy, and objective to generate queries. Additionally, human created "seed" queries were provided to increase the quality of adversarial queries generated. The output was sent through standard regex formatting to ensure it does not break the JSON output with failed escape characters.
+I utilized simple localized models for these scripts. For attack generation, the primary model utilized was Phi 3 (phi3:3.8b). This model was provided an attack tone, strategy, and objective to generate queries. Additionally, human-created "seed" queries were provided to increase the quality of adversarial queries generated. The output was sent through standard regex formatting to ensure it does not break the JSON output with failed escape characters.
 
 Once the initial generation was complete, I utilized LFM 2 (maternion/lfm2:8b) as an auditor. I found through testing that utilizing an MoE model provided higher quality auditing capabilities to standard models, and chose LFM 2 due to its size fitting my computational constraints at the time of creation. The auditor will force regeneration of queries it finds ineffective, greatly increasing quality.
 
@@ -35,6 +35,6 @@ Additionally, by attempting to create a generator for adversarial queries prior 
 
 ### Conclusions & Next Steps
 
-The results of this are inconclusive. More research will be needed, and I believe that this will become more important as time goes on given that multiple frontier model organizations are moving towards intent based guardrails that are dependent on the model's analysis of the user over what is actually being requested.
+The results of this are inconclusive. More research will be needed, and I believe that this will become more important as time goes on given that multiple frontier model organizations are moving towards intent-based guardrails that are dependent on the model's analysis of the user over what is actually being requested.
 
 For future tests, I will be creating a large number of queries manually, and hope to test against multiple larger models.
